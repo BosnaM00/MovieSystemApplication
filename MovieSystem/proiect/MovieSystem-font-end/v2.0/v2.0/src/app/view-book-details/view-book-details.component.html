@@ -1,0 +1,107 @@
+<!--prima parte a paginii, care contine imaginea, butoanele si mici detalii-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
+<div class="d-flex align-items-center m-3">
+  The movie is part of the
+  <b class="rounded-3 border border-secondary p-1 mx-2">{{book.category}}</b> category
+</div>
+
+<div class="row w-100 m-0">
+
+  <div class="image col-12 col-md-4 offset-md-3">
+    <div class="h-75 w-100 border border-info d-flex justify-content-center align-items-center"
+         style="min-height: 75vh; max-height: 75vh; background-image: url('/assets/film.jpg'); background-size: cover; background-position: -250px">
+      <!--      TODO the image must be loaded from the backend-->
+      <!--      <img src="{{book.uploadedFileName}}" alt="{{book.uploadedFileName}}">-->
+
+    </div>
+  </div>
+
+  <div class="important-details col-12 col-md-5 d-flex flex-column gap-3">
+    <!--    daca apesi pe stelute, ajungi la sectiunea de review, din josul paginii:-->
+    <div class="review d-flex gap-2 align-items-end">
+      <a href="" onclick="giveReview(1)"><i class="fa fa-star text-warning"></i></a>
+      <a href="" onclick="giveReview(2)"><i class="fa fa-star text-warning"></i></a>
+      <a href="" onclick="giveReview(3)"><i class="fa fa-star text-warning"></i></a>
+      <a href="" onclick="giveReview(4)"><i class="fa fa-star text-warning"></i></a>
+      <a href="" onclick="giveReview(5)"><i class="fa fa-star text-warning"></i></a>
+      <!--      TODO aici trebuie sa adaugam din backend nota medie a review-urilor-->
+      5
+    </div>
+    <!--    alte detalii-->
+    <div class="author-and-title">
+      <h6 class="text-uppercase my-1">{{book.author}}</h6>
+      <p class="text-secondary">{{book.title}}</p>
+    </div>
+<!--    <div class="details">-->
+<!--      Brought to you by <span class="fw-bold fst-italic">Vision Library</span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      Publishing house: <span class="text-primary">{{book.publishingHouse}}</span>-->
+<!--    </div>-->
+
+<!--    <div class="my-4">-->
+<!--      All books are free to download <i class="fa fa-heart text-danger"></i>-->
+<!--    </div>-->
+
+<!--    <div *ngIf="book.uploadedFileName">-->
+<!--      <a class="btn btn-primary fw-bold " href="{{baseUrl + book.uploadedFileName}}" target="_blank"> Download Your Free-->
+<!--        <i class="fa fa-book mx-2"></i></a>-->
+<!--    </div>-->
+  </div>
+
+</div>
+<!--A doua parte a paginii, care contine detaliile-->
+
+<!--Butoane catre descriere, detalii, review-uri-->
+
+<div class="border-top border-bottom border-secondary border-opacity-50 p-4 m-5 d-flex flex-row gap-3">
+  <!--  TODO cant scroll into view with the usual method-->
+  <a href="#description" class="btn btn-outline-primary border border-primary">Description</a>
+  <a href="#details" class="btn btn-outline-primary border border-primary">Details</a>
+  <a href="#reviews" class="btn btn-outline-primary border border-primary">Reviews</a>
+</div>
+
+<div id="description" class="row d-flex gap-3 m-0">
+  <h3 class="mx-0 px-0">Description</h3>
+  <!--  TODO de adaugat descrierea cartii-->
+  <!--   {{book.description}}-->
+  <p class="">{{book.description}}</p>
+</div>
+
+
+<div id="details" class="d-flex flex-column  m-0">
+  <h3 class="m-0 px-0">Details</h3>
+  <div class="row py-2 ps-2 m-0">
+    <div class="col-5  py-2 bg-secondary bg-opacity-10 fw-bold">Author</div>
+    <div class="col-7 py-2 bg-secondary bg-opacity-10">{{book.author}}</div>
+
+    <div class="col-5 py-2  fw-bold">Category</div>
+    <div class="col-7 py-2 ">{{book.category}}</div>
+
+    <div class="col-5 py-2 bg-secondary bg-opacity-10 fw-bold">Available</div>
+    <div class="col-7 py-2 bg-secondary bg-opacity-10">{{book.available ? "Yes" : 'No'}}</div>
+
+<!--    <div class="col-5 py-2 fw-bold">Collection</div>-->
+<!--    <div class="col-7 py-2">{{book.collection}}</div>-->
+
+    <div class="col-5 py-2 bg-secondary bg-opacity-10 fw-bold">Language</div>
+    <div class="col-7 py-2 bg-secondary bg-opacity-10">{{book.language}}</div>
+
+  </div>
+</div>
+
+
+<div id="reviews" class="d-flex flex-column mt-5 pt-5 border-top border-secondary border-opacity-50" style="background: #fafafa">
+  <h3 class="mx-0 px-0 text-center">We Appreciate Your Reviews</h3>
+  <app-create-review></app-create-review>
+</div>
+
+<script src="https://use.fontawesome.com/a6f0361695.js"></script>
+
+
+

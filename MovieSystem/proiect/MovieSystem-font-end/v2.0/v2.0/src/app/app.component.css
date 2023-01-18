@@ -1,0 +1,23 @@
+@media only screen and (min-width: 767px) {
+  .align-to-bottom {
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+.bg-100px {
+  margin: 0;
+  background-image: url("/assets/bg-home-100px.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 12px;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+

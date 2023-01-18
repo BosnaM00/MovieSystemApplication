@@ -1,0 +1,126 @@
+<div class="row m-0">
+  <aside class="col-12 col-lg-2 d-flex flex-lg-column flex-column gap-3 ps-0">
+    <div class="col-sm-12 border border-dark p-3">
+      <h6 class="font-monospace">Filter by language</h6>
+      <div class="d-flex flex-column gap-1">
+        <a class="btn btn-light col-8 offset-0 p-1 text-start" *ngFor="let language of languages"
+           (click)="languageChanged(language,$event)">
+          {{language.label}}
+        </a>
+        <a class="btn btn-light col-8 offset-0 p-1 text-start" (click)="languageChanged({label:'All'}, $event)">
+          ALL LANGUAGES
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-12 border border-dark p-3">
+      <h6 class="font-monospace">Filter by category</h6>
+      <div class="d-flex flex-column gap-1 ">
+        <a class="btn btn-light col-8 offset-0 p-1 text-start" *ngFor="let category of categories"
+           (click)="categoryChanged(category,$event)">
+          {{category.label}}
+        </a>
+        <a class="btn btn-light col-8 offset-0 p-1 text-start" (click)="categoryChanged({label: 'All'},$event)">
+          ALL GENRES
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="col-md-10 pe-0">
+    <div class="row p-0 w-100">
+      <div class="col-sm-12 p-0">
+        <!-- search input-->
+        <form>
+          <input type="search" (ngModelChange)="searchBooks(key.value)" #key="ngModel" ngModel
+                 name="key" id="searchName" class="form-control mr-sm-2"
+                 placeholder="Search movies by author, title..." required>
+        </form>
+        <div class="filter-buttons d-flex gap-3 my-3">
+          <!--          first dropdown-->
+          <div class="dropdown d-inline-block">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              Order movies A-Z by ...
+            </button>
+            <ul class="dropdown-menu w-100">
+              <li><a (click)="sortBooksByAuthor($event)" class="dropdown-item" href="#">Author</a></li>
+              <li><a (click)="sortBooksByTitle($event)" class="dropdown-item" href="#">Title</a></li>
+              <li><a (click)="sortBooksByNumberOfPages($event)" class="dropdown-item" href="#">Duration</a></li>
+              <li><a (click)="sortBooksByYearOfLaunch($event)" class="dropdown-item" href="#">Year of launch</a></li>
+            </ul>
+          </div>
+          <!--          second dropdown-->
+          <div class="dropdown d-inline-block">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              Order movies Z-A by ...
+            </button>
+            <ul class="dropdown-menu  w-100">
+              <li><a (click)="sortBooksByAuthorDesc($event)" class="dropdown-item" href="#">Author</a></li>
+              <li><a (click)="sortBooksByTitleDesc($event)" class="dropdown-item" href="#">Title</a></li>
+              <li><a (click)="sortBooksByNumberOfPagesDesc($event)" class="dropdown-item" href="#">Duration</a>
+              </li>
+              <li><a (click)="sortBooksByYearOfLaunchDesc($event)" class="dropdown-item" href="#">Year of launch</a>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown d-inline-block ">
+            <button class="btn btn-secondary" type="button"
+                    aria-expanded="false">
+              <a (click)="findAllAvailableBooks($event)" class="btn-secondary" href="#">Show all available movies</a>
+            </button>
+          </div>
+
+          <div class="dropdown d-inline-block">
+            <button class="btn btn-secondary" type="button"
+                    aria-expanded="false">
+              <a (click)="findAllUnavailableBooks($event)" class="btn-secondary" href="#">Show all coming soon movies!</a>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="books-list row">
+
+
+          <div *ngFor="let book of books"
+               class="col-12 col-md-6 p-4">
+            <div class="book-item border border-secondary rounded-3 p-3 row">
+              <div class="image col-12 col-md-4 border border-info " style="background-image: url('/assets/movie.png'); background-position: right">
+
+              </div>
+              <div class="content col-12 col-md-7">
+                <h3>  {{book.title}}</h3>
+                <h6>  {{book.author}}</h6>
+
+                <div *ngIf="book.available == true" class="text-success"> Available</div>
+                <div *ngIf="book.available == false" class="text-danger"> Coming soon </div>
+                <div class="my-3">Language:  {{book.language}}</div>
+                <div class="my-3">Category:  {{book.category}}</div>
+                <div>
+                </div>
+                <div class="d-flex gap-3">
+                  <button (click)="bookDetails(book.id)" class="btn btn-info">
+                    View
+                  </button>
+                  <button *ngIf="commonUtil.isAdminUser()" (click)="updateBook(book.id)" class="btn btn-info"> Update
+                  </button>
+                  <button *ngIf="commonUtil.isAdminUser()" (click)="deleteBook(book.id)" class="btn btn-danger"
+                          style="margin-left: 10px"> Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12" style="text-align: right;padding-left: 10px">
+        <mat-paginator [length]="totalData" [pageSize]="PAGE_SIZE" [pageIndex]="currentPage"
+                       (page)="pageChanged($event)" aria-label="Please select a page">
+        </mat-paginator>
+      </div>
+    </div>
+  </main>
+</div>
+
+

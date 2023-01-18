@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.wrapper{
+  width: 1170px;
+  margin:auto;
+}
+header{
+  -webkit-background-size: cover;
+  background-size: cover;
+  background: url("elib.png") center center;
+  position: relative;
+}
+
+
+.bg-container {
+  position: relative;
+  min-height: 39vw;
+}
+
+.bg-content-over-image {
+  position: relative;
+  z-index: 100;
+
+  margin-top: 0vw;
+}
+
+.bg-home {
+  z-index: 1;
+  opacity: 0.8;
+  filter: brightness(.55);
+  position: absolute;
+  left: 0;
+  top: -23vw;
+  width: 100%;
+  height: auto;
+
+
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}

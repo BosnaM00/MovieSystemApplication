@@ -1,0 +1,32 @@
+<!--<app-register-user></app-register-user>-->
+
+
+<div class="position-relative" style="min-height: calc(100vh + 100px)">
+  <div [ngClass]="!commonUtil.getLoginUser() ? 'row p-3 bg-black' : 'row p-3 bg-100px'">
+    <div class="col-sm-8"  style="position: relative; z-index: 3">
+      <a *ngIf="!commonUtil.getLoginUser()" routerLink="/home" routerLinkActive="active"
+         class="btn btn-outline-light">Home</a>
+
+      <div *ngIf="commonUtil.getLoginUser()" class="d-flex gap-2">
+        <a routerLink="/getAllBooks" routerLinkActive="active" class="btn btn-close-white">All Movies</a>
+        <a *ngIf="commonUtil.isAdminUser()" routerLink="/addBook" routerLinkActive="active" class="btn btn-close-white">Add Movie in System</a>
+        <a routerLink="/home" routerLinkActive="active" class="btn btn-close-white">Home</a>
+      </div>
+
+
+    </div>
+    <div class="col-sm-4" style="text-align: right;padding-left: 10px">
+
+      <div *ngIf="!commonUtil.getLoginUser()" class="login-options d-flex gap-1" style="position: relative; z-index: 3">
+        <a routerLink="/register" routerLinkActive="active" class="btn btn-outline-light">Register</a>
+        <a routerLink="/login" routerLinkActive="active" class="btn btn-close-white">Login</a>
+      </div>
+
+      <button *ngIf="commonUtil.getLoginUser()" class="btn btn-close-white" (click)="logout($event)">Logout
+      </button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+  <div class="m-5 p-5">&nbsp;</div>
+</div>

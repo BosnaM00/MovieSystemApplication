@@ -1,0 +1,70 @@
+<div class="col-md-6 offset-md-3">
+  <h3> Add review </h3>
+  <form (ngSubmit)="onSubmit()">
+
+    <!--  // current review-->
+    <div class="gap-3">
+      <div class="row my-3">
+        <span class="col-2 col-sm-1">
+          <i class="fa fa-user fa-2x m-1 text-success"></i>
+        </span>
+        <div class="col-9 ms-3 col-sm-10 shadow-sm bg-white p-4 text-secondary small">
+          <div class="d-flex flex-column">
+            <h5 class=" my-0 pb-0">
+              <!--            First name-->
+              <div class="form-group mb-3">
+                <label class="small fw-normal" style="font-size: 14px"> First Name </label>
+                <input type="text" class="form-control border-0 border-bottom border-secondary rounded-0" id="firstName"
+                       [(ngModel)]="review.reviewerFirstName" name="firstName">
+              </div>
+              <!--  last name-->
+              <div class="form-group mb-3">
+                <label class="small fw-normal" style="font-size: 14px"> Last Name</label>
+                <input type="text" class="form-control border-0 border-bottom border-secondary rounded-0" id="lastName"
+                       [(ngModel)]="review.reviewerLastName" name="lastName">
+              </div>
+            </h5>
+          </div>
+
+          <div class="my-2">
+            <div class="form-group">
+              <label> Description</label>
+              <input type="text" class="form-control border-0 border-bottom border-secondary rounded-0" id="description"
+                     [(ngModel)]="review.description" name="description">
+            </div>
+          </div>
+
+
+          <button class="btn btn-success mt-3" type="submit">
+            Save
+            <span class="fa fa-paper-plane mx-1"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <h3> Past Reviews </h3>
+
+  <!--  past reviews:-->
+  <div class="gap-3" *ngFor="let review of reviews">
+    <div class="row my-3">
+        <span class="col-2 col-sm-1">
+          <i class="fa fa-user fa-2x m-1"></i>
+        </span>
+      <div class="col-9 ms-3 col-sm-10 shadow-sm bg-white p-4">
+        <div class="d-flex flex-column">
+          <h5 class=" my-0 pb-0">{{review.reviewerFirstName}} {{review.reviewerLastName}} </h5>
+        </div>
+        <div class="text-secondary m-0 small">
+          <!--            TODO place a real date from the model? -->
+          now
+        </div>
+        <div class="my-2">{{review.description}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

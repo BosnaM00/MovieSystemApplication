@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MovieSystem/proiect/MovieSystem/MovieSystemBackend/MovieSystem/MovieSystem.iml" filepath="$PROJECT_DIR$/MovieSystem/proiect/MovieSystem/MovieSystemBackend/MovieSystem/MovieSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MovieSystemProject.iml" filepath="$PROJECT_DIR$/.idea/MovieSystemProject.iml" />
+    </modules>
+  </component>
+</project>
